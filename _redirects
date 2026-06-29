@@ -1,0 +1,5 @@
+/academiareikianahata /academiareikianahata/ 301!
+/academiareikianahata/ /index.html 200
+/academiareikianahata/assets/* /assets/:splat 200
+/academiareikianahata/styles.css /styles.css 200
+/academiareikianahata/script.js /script.js 200
