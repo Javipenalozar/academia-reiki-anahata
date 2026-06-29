@@ -120,10 +120,10 @@ a {
 
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 760px;
   display: grid;
-  align-items: end;
-  padding: 116px clamp(18px, 5vw, 72px) 52px;
+  align-items: center;
+  padding: 116px clamp(18px, 5vw, 72px) 72px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -139,18 +139,25 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  filter: saturate(0.95);
 }
 
 .hero-media::after {
   content: "";
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(251, 248, 241, 0.96) 0%, rgba(251, 248, 241, 0.78) 42%, rgba(251, 248, 241, 0.25) 100%),
-    linear-gradient(0deg, rgba(36, 27, 10, 0.38), transparent 44%);
+    linear-gradient(90deg, rgba(251, 248, 241, 0.98) 0%, rgba(251, 248, 241, 0.9) 48%, rgba(251, 248, 241, 0.34) 100%),
+    linear-gradient(0deg, rgba(36, 27, 10, 0.3), transparent 52%);
 }
 
 .hero-content {
-  max-width: 720px;
+  max-width: 660px;
+  padding: clamp(22px, 4vw, 42px);
+  border-radius: var(--radius);
+  background: rgba(251, 248, 241, 0.78);
+  box-shadow: 0 24px 80px rgba(36, 27, 10, 0.12);
+  backdrop-filter: blur(8px);
 }
 
 .eyebrow {
@@ -172,8 +179,8 @@ h3 {
 }
 
 h1 {
-  max-width: 650px;
-  font-size: clamp(4.1rem, 11vw, 8.6rem);
+  max-width: 620px;
+  font-size: clamp(3rem, 6.4vw, 5.6rem);
 }
 
 h2 {
@@ -185,10 +192,11 @@ h3 {
 }
 
 .lead {
-  max-width: 620px;
-  margin: 24px 0 0;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 650;
+  max-width: 600px;
+  margin: 22px 0 0;
+  color: rgba(36, 27, 10, 0.86);
+  font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+  font-weight: 720;
 }
 
 .hero-actions {
@@ -539,7 +547,7 @@ footer p {
 
   .hero-media::after {
     background:
-      linear-gradient(180deg, rgba(251, 248, 241, 0.96) 0%, rgba(251, 248, 241, 0.82) 52%, rgba(251, 248, 241, 0.44) 100%),
+      linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(251, 248, 241, 0.88) 58%, rgba(251, 248, 241, 0.58) 100%),
       linear-gradient(0deg, rgba(36, 27, 10, 0.44), transparent 44%);
   }
 
@@ -579,7 +587,7 @@ footer p {
   }
 
   h1 {
-    font-size: clamp(3.2rem, 18vw, 5.2rem);
+    font-size: clamp(2.55rem, 13vw, 4rem);
   }
 
   .hero-facts {

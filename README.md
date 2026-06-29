@@ -2,6 +2,8 @@
 
 Landing page estatica para el nuevo grupo presencial de Reiki Anahata que inicia el 22 de julio.
 
+URL publica: `https://anahata.eventosjv.com/`
+
 ## Publicacion en Netlify
 
 1. Sube este proyecto a GitHub.
