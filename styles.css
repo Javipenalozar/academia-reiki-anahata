@@ -336,15 +336,17 @@ h3 {
   max-width: 980px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 390px 1fr;
-  gap: 60px;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 52px;
   align-items: center;
+  justify-content: center;
 }
 
 .chakra-gate {
   position: relative;
-  width: 390px;
+  width: min(100%, 340px);
   aspect-ratio: 1;
+  margin-inline: auto;
   border-radius: 50%;
   background:
     radial-gradient(circle, rgba(246, 240, 230, 0.12) 0 18%, transparent 19%),
@@ -380,14 +382,14 @@ h3 {
 
 .chakra-node {
   position: absolute;
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   border: 1px solid rgba(246, 240, 230, 0.78);
   border-radius: 50%;
   color: var(--marfil);
   cursor: pointer;
   font-family: Inter, sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -794,7 +796,7 @@ footer p {
   }
 
   .chakra-gate {
-    width: min(100%, 320px);
+    width: min(100%, 280px);
   }
 
   .route-line {
@@ -878,13 +880,13 @@ footer p {
   }
 
   .chakra-gate {
-    width: min(100%, 280px);
+    width: min(100%, 240px);
   }
 
   .chakra-node {
-    width: 44px;
-    height: 44px;
-    font-size: 0.46rem;
+    width: 38px;
+    height: 38px;
+    font-size: 0;
   }
 
   .practice-tabs,
@@ -913,8 +915,8 @@ footer p {
   }
 
   .chakra-node {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     font-size: 0;
   }
 }
