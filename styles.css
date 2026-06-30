@@ -271,21 +271,18 @@ h3 {
   margin: 34px 0 0;
 }
 
-.hero-facts div,
-.feature-grid article,
-.level-grid article,
-.include-box,
-.support-grid article {
-  border: 1px solid rgba(75, 57, 13, 0.14);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.76)) padding-box,
-    linear-gradient(135deg, rgba(67, 146, 106, 0.44), rgba(235, 190, 69, 0.34), rgba(141, 91, 164, 0.3)) border-box;
-  box-shadow: 0 18px 60px rgba(36, 27, 10, 0.1);
+.hero-facts div {
+  border-left: 3px solid rgba(67, 146, 106, 0.55);
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.48);
 }
 
-.hero-facts div {
-  padding: 16px;
+.hero-facts div:nth-child(2) {
+  border-left-color: rgba(235, 190, 69, 0.74);
+}
+
+.hero-facts div:nth-child(3) {
+  border-left-color: rgba(141, 91, 164, 0.6);
 }
 
 dt {
@@ -360,14 +357,15 @@ dd {
 .support-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: clamp(18px, 3vw, 34px);
 }
 
 .feature-grid article,
 .level-grid article {
   position: relative;
   overflow: hidden;
-  padding: 28px;
+  padding: 8px 0 0 22px;
+  border-left: 2px solid rgba(75, 57, 13, 0.14);
 }
 
 .feature-grid article::before,
@@ -375,10 +373,11 @@ dd {
 .support-grid article::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto;
-  height: 7px;
-  background: var(--chakra-line);
-  opacity: 0.9;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 72px;
+  opacity: 1;
 }
 
 .feature-grid article:nth-child(1)::before,
@@ -401,10 +400,10 @@ dd {
 
 .feature-grid span {
   display: inline-flex;
-  margin-bottom: 22px;
-  color: var(--rose);
+  margin-bottom: 18px;
+  color: rgba(75, 57, 13, 0.58);
   font-family: Georgia, serif;
-  font-size: 3rem;
+  font-size: 2.35rem;
   font-weight: 900;
   line-height: 1;
 }
@@ -414,6 +413,16 @@ dd {
 .support-grid p {
   color: rgba(36, 27, 10, 0.74);
   font-weight: 600;
+}
+
+.feature-grid h3,
+.level-grid h3,
+.support-grid h3 {
+  max-width: 10ch;
+}
+
+.support-grid h3 {
+  max-width: 14ch;
 }
 
 .split {
@@ -482,7 +491,8 @@ dd {
 .support-grid article {
   position: relative;
   overflow: hidden;
-  padding: 26px;
+  padding: 8px 0 0 22px;
+  border-left: 2px solid rgba(75, 57, 13, 0.14);
 }
 
 .support-grid h3,
@@ -529,18 +539,23 @@ dd {
 .pricing-panel {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 0;
   max-width: 680px;
   margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
 }
 
 .price-box p,
 .pricing-panel p {
   margin: 0;
-  padding: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.13);
+  padding: 24px 26px;
+  background: transparent;
+}
+
+.price-box p + p,
+.pricing-panel p + p {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
 }
 
 .price-box span,
@@ -577,9 +592,7 @@ dd {
   background:
     radial-gradient(circle at 12% 18%, rgba(235, 190, 69, 0.36), transparent 42%),
     radial-gradient(circle at 88% 78%, rgba(67, 146, 106, 0.22), transparent 38%),
-    rgba(255, 226, 160, 0.18) !important;
-  border-color: rgba(255, 226, 160, 0.52) !important;
-  box-shadow: 0 20px 70px rgba(255, 226, 160, 0.12);
+    rgba(255, 226, 160, 0.08) !important;
 }
 
 .price-special strong {
@@ -601,13 +614,10 @@ dd {
 }
 
 .include-box {
-  padding: 30px;
+  padding: 8px 0 0 26px;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 92% 12%, rgba(67, 146, 106, 0.22), transparent 32%),
-    radial-gradient(circle at 10% 86%, rgba(141, 91, 164, 0.18), transparent 28%),
-    radial-gradient(circle at 14% 14%, rgba(224, 125, 50, 0.16), transparent 24%),
-    rgba(255, 255, 255, 0.9);
+  border-left: 3px solid rgba(67, 146, 106, 0.64);
+  background: transparent;
 }
 
 .include-box h3 {
@@ -616,10 +626,27 @@ dd {
 
 .include-box ul {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   margin: 0;
-  padding-left: 20px;
+  padding-left: 0;
   font-weight: 750;
+  list-style: none;
+}
+
+.include-box li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.include-box li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--chakra-line);
 }
 
 .gallery {
@@ -642,14 +669,14 @@ dd {
 .statement-list {
   align-self: center;
   margin: 0;
-  padding: 28px;
-  border: 1px solid rgba(75, 57, 13, 0.14);
-  border-radius: var(--radius);
+  padding: 8px 0 8px 28px;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-image: var(--chakra-line) 1;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.76)) padding-box,
-    var(--chakra-line) border-box;
-  border: 2px solid transparent;
-  box-shadow: 0 18px 60px rgba(36, 27, 10, 0.1);
+    radial-gradient(circle at 8% 16%, rgba(67, 146, 106, 0.12), transparent 28%),
+    transparent;
+  box-shadow: none;
 }
 
 .gallery img {
@@ -735,6 +762,12 @@ footer p {
   .price-box,
   .pricing-panel {
     grid-template-columns: 1fr;
+  }
+
+  .price-box p + p,
+  .pricing-panel p + p {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
   }
 
   .countdown-band,
