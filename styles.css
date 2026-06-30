@@ -401,18 +401,18 @@ h3 {
 .chakra-node:focus-visible,
 .chakra-node.is-active {
   z-index: 2;
-  transform: translate(-50%, -50%) scale(1.12);
-  box-shadow: 0 0 0 9px var(--active-glow);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 0 0 6px var(--active-glow);
   outline: 0;
 }
 
-.chakra-node.root { top: 88%; left: 50%; background: #b9363c; }
-.chakra-node.sacral { top: 72%; left: 21%; background: #e07d32; }
-.chakra-node.solar { top: 39%; left: 14%; background: #d8a626; }
-.chakra-node.heart { top: 14%; left: 35%; background: #43926a; }
-.chakra-node.throat { top: 14%; left: 65%; background: #4d9ab5; }
-.chakra-node.third-eye { top: 39%; left: 86%; background: #4e54a4; }
-.chakra-node.crown { top: 72%; left: 79%; background: #8d5ba4; }
+.chakra-node.root { top: 83%; left: 50%; background: #b9363c; }
+.chakra-node.sacral { top: 69%; left: 27%; background: #e07d32; }
+.chakra-node.solar { top: 47%; left: 20%; background: #d8a626; }
+.chakra-node.heart { top: 25%; left: 36%; background: #43926a; }
+.chakra-node.throat { top: 25%; left: 64%; background: #4d9ab5; }
+.chakra-node.third-eye { top: 47%; left: 80%; background: #4e54a4; }
+.chakra-node.crown { top: 69%; left: 73%; background: #8d5ba4; }
 
 .portal-readout {
   min-height: 390px;
