@@ -420,7 +420,8 @@ dd {
   align-self: center;
 }
 
-.price-box {
+.price-box,
+.pricing-panel {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -428,7 +429,8 @@ dd {
   margin-top: 30px;
 }
 
-.price-box p {
+.price-box p,
+.pricing-panel p {
   margin: 0;
   padding: 22px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -437,18 +439,49 @@ dd {
 }
 
 .price-box span,
-.price-box strong {
+.price-box strong,
+.pricing-panel span,
+.pricing-panel strong,
+.pricing-panel small {
   display: block;
 }
 
-.price-box span {
+.price-box span,
+.pricing-panel span {
   color: rgba(255, 255, 255, 0.74);
   font-weight: 800;
 }
 
-.price-box strong {
+.price-box strong,
+.pricing-panel strong {
   margin-top: 3px;
   font-size: clamp(1.55rem, 3vw, 2.6rem);
+}
+
+.price-regular {
+  opacity: 0.72;
+}
+
+.price-regular strong {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.08em;
+}
+
+.price-special {
+  position: relative;
+  background: rgba(255, 226, 160, 0.18) !important;
+  border-color: rgba(255, 226, 160, 0.52) !important;
+  box-shadow: 0 20px 70px rgba(255, 226, 160, 0.12);
+}
+
+.price-special strong {
+  color: #ffe2a0;
+}
+
+.price-special small {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 800;
 }
 
 .discount {
@@ -575,7 +608,8 @@ footer p {
   .level-grid,
   .support-grid,
   .gallery,
-  .price-box {
+  .price-box,
+  .pricing-panel {
     grid-template-columns: 1fr;
   }
 
