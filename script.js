@@ -112,7 +112,7 @@ const practiceProgram = {
   practice: {
     tag: "Integración",
     title: "4 clases prácticas",
-    text: "Practicas durante el proceso, con guía presencial y retroalimentación para sentir seguridad al canalizar."
+    text: "Realizas prácticas durante el proceso, con guía presencial y retroalimentación para sentir seguridad al canalizar."
   },
   tools: {
     tag: "Herramientas",

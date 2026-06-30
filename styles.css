@@ -490,36 +490,40 @@ h3 {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid var(--linea);
-  border-bottom: 1px solid var(--linea);
 }
 
 .route-line article {
-  min-height: 270px;
-  padding: 26px 18px;
+  min-height: 240px;
+  padding: 28px 24px;
   border-left: 1px solid rgba(201, 168, 76, 0.12);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
 }
 
+.route-line article:nth-child(4n),
 .route-line article:last-child {
   border-right: 1px solid rgba(201, 168, 76, 0.12);
 }
 
 .route-line span {
   display: block;
-  margin-bottom: 44px;
+  margin-bottom: 34px;
   color: rgba(201, 168, 76, 0.62);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 .route-line h3 {
-  font-size: 1.18rem;
+  max-width: 12ch;
+  font-size: 1.22rem;
+  line-height: 1.2;
 }
 
 .route-line p {
   color: var(--texto-suave);
-  font-size: 0.98rem;
+  max-width: 24ch;
+  font-size: 0.96rem;
   line-height: 1.6;
 }
 
@@ -790,7 +794,20 @@ footer p {
   }
 
   .chakra-gate {
-    width: min(100%, 360px);
+    width: min(100%, 320px);
+  }
+
+  .route-line {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .route-line article:nth-child(4n) {
+    border-right: 0;
+  }
+
+  .route-line article:nth-child(2n),
+  .route-line article:last-child {
+    border-right: 1px solid rgba(201, 168, 76, 0.12);
   }
 }
 
@@ -837,18 +854,37 @@ footer p {
     border-top: 1px solid rgba(201, 168, 76, 0.18);
   }
 
-  .route-line {
-    grid-template-columns: 1fr;
-  }
-
   .route-line article,
   .route-line article:last-child {
     min-height: auto;
     border-right: 0;
   }
 
+  .route-line {
+    grid-template-columns: 1fr;
+  }
+
+  .route-line article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .route-line h3,
+  .route-line p {
+    max-width: none;
+  }
+
   .route-line span {
     margin-bottom: 18px;
+  }
+
+  .chakra-gate {
+    width: min(100%, 280px);
+  }
+
+  .chakra-node {
+    width: 44px;
+    height: 44px;
+    font-size: 0.46rem;
   }
 
   .practice-tabs,
@@ -877,8 +913,8 @@ footer p {
   }
 
   .chakra-node {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     font-size: 0;
   }
 }
