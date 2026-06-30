@@ -1,31 +1,15 @@
 :root {
-  --ink: #241b0a;
-  --earth: #4b390d;
-  --gold: #b9832d;
-  --sage: #63765c;
-  --moss: #2f4a3b;
-  --rose: #b87564;
-  --paper: #fbf8f1;
-  --cream: #efe7d6;
+  --ink: #211909;
+  --earth: #49370d;
+  --moss: #294838;
+  --moss-deep: #152d24;
+  --gold: #d8a626;
+  --paper: #fbf7ed;
+  --mist: rgba(255, 255, 255, 0.66);
   --white: #ffffff;
-  --chakra-root: rgba(185, 54, 60, 0.24);
-  --chakra-sacral: rgba(224, 125, 50, 0.23);
-  --chakra-solar: rgba(235, 190, 69, 0.25);
-  --chakra-heart: rgba(67, 146, 106, 0.27);
-  --chakra-throat: rgba(77, 154, 181, 0.23);
-  --chakra-third-eye: rgba(78, 84, 164, 0.21);
-  --chakra-crown: rgba(141, 91, 164, 0.21);
-  --chakra-line: linear-gradient(
-    90deg,
-    rgba(185, 54, 60, 0.74),
-    rgba(224, 125, 50, 0.72),
-    rgba(235, 190, 69, 0.78),
-    rgba(67, 146, 106, 0.82),
-    rgba(77, 154, 181, 0.72),
-    rgba(78, 84, 164, 0.66),
-    rgba(141, 91, 164, 0.7)
-  );
-  --shadow: 0 24px 80px rgba(36, 27, 10, 0.16);
+  --active: #43926a;
+  --active-glow: rgba(67, 146, 106, 0.34);
+  --chakra-line: linear-gradient(90deg, #b9363c, #e07d32, #d8a626, #43926a, #4d9ab5, #4e54a4, #8d5ba4);
   --radius: 8px;
 }
 
@@ -41,13 +25,17 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 8% 11%, var(--chakra-crown), transparent 25%),
-    radial-gradient(circle at 92% 14%, var(--chakra-throat), transparent 24%),
-    radial-gradient(circle at 16% 48%, var(--chakra-heart), transparent 28%),
-    radial-gradient(circle at 88% 68%, var(--chakra-solar), transparent 28%),
-    linear-gradient(180deg, var(--paper), #f8f2e9 46%, var(--paper));
+    radial-gradient(circle at 12% 8%, rgba(141, 91, 164, 0.22), transparent 24%),
+    radial-gradient(circle at 90% 12%, rgba(77, 154, 181, 0.24), transparent 26%),
+    radial-gradient(circle at 50% 50%, rgba(67, 146, 106, 0.16), transparent 32%),
+    linear-gradient(180deg, #fbf7ed 0%, #f3ebdc 48%, #fbf7ed 100%);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
+}
+
+body::selection {
+  color: var(--white);
+  background: var(--moss);
 }
 
 img {
@@ -59,31 +47,37 @@ a {
   color: inherit;
 }
 
+.energy-field {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  opacity: 0.82;
+  background:
+    conic-gradient(from 210deg at 50% 12%, rgba(185, 54, 60, 0.08), rgba(224, 125, 50, 0.08), rgba(216, 166, 38, 0.1), rgba(67, 146, 106, 0.14), rgba(77, 154, 181, 0.08), rgba(78, 84, 164, 0.08), rgba(141, 91, 164, 0.08), rgba(185, 54, 60, 0.08)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.55), transparent 36%, rgba(255, 255, 255, 0.45));
+}
+
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 20;
+  inset: 0 0 auto;
+  z-index: 30;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 24px;
-  padding: 12px clamp(18px, 4vw, 56px);
-  background: rgba(251, 248, 241, 0.86);
-  border-bottom: 1px solid rgba(75, 57, 13, 0.12);
+  padding: 12px clamp(16px, 4vw, 56px);
+  background: rgba(251, 247, 237, 0.76);
+  border-bottom: 1px solid rgba(73, 55, 13, 0.12);
   backdrop-filter: blur(18px);
 }
 
 .site-header::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 4px;
+  inset: auto 0 -1px;
+  height: 3px;
   background: var(--chakra-line);
-  opacity: 0.82;
 }
 
 .brand {
@@ -96,9 +90,8 @@ a {
 .brand-logo {
   width: 52px;
   height: 52px;
-  flex: 0 0 52px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgba(47, 74, 59, 0.2));
+  filter: drop-shadow(0 12px 24px rgba(41, 72, 56, 0.24));
 }
 
 .brand strong,
@@ -111,7 +104,7 @@ a {
 }
 
 .brand small {
-  color: rgba(36, 27, 10, 0.66);
+  color: rgba(33, 25, 9, 0.64);
   font-size: 0.78rem;
 }
 
@@ -119,12 +112,17 @@ a {
   justify-self: center;
   display: flex;
   gap: 28px;
-  font-size: 0.95rem;
 }
 
 .nav a,
-.header-cta {
+.header-cta,
+.button {
   text-decoration: none;
+}
+
+.nav a {
+  font-weight: 850;
+  color: rgba(33, 25, 9, 0.76);
 }
 
 .header-cta,
@@ -133,95 +131,72 @@ a {
   min-height: 46px;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius);
-  padding: 0 20px;
-  font-weight: 800;
-  text-decoration: none;
+  border-radius: 999px;
+  padding: 0 22px;
+  font-weight: 900;
 }
 
 .header-cta,
 .button.primary {
   color: var(--white);
-  background: var(--moss);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 226, 160, 0.22), transparent 36%),
+    var(--moss);
+  box-shadow: 0 18px 44px rgba(41, 72, 56, 0.22);
 }
 
-.button.secondary {
+.button.ghost {
   color: var(--earth);
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(75, 57, 13, 0.18);
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(73, 55, 13, 0.16);
 }
 
-.hero {
+.portal-hero {
   position: relative;
-  min-height: 690px;
+  min-height: 100svh;
   display: grid;
-  align-items: center;
-  padding: 108px clamp(18px, 5vw, 72px) 56px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.4fr);
+  align-items: end;
+  gap: 28px;
+  padding: 132px clamp(18px, 5vw, 78px) 58px;
   overflow: hidden;
   isolation: isolate;
 }
 
-.hero-media,
-.hero-media::after {
+.hero-image,
+.hero-image::after {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
 }
 
-.hero-media img {
+.hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.95);
+  filter: saturate(0.92) contrast(0.96);
 }
 
-.hero-media::after {
+.hero-image::after {
   content: "";
-  z-index: -1;
   background:
-    radial-gradient(circle at 58% 33%, rgba(67, 146, 106, 0.27), transparent 22%),
-    radial-gradient(circle at 78% 72%, rgba(141, 91, 164, 0.22), transparent 24%),
-    radial-gradient(circle at 18% 75%, rgba(224, 125, 50, 0.22), transparent 26%),
-    radial-gradient(circle at 34% 22%, rgba(235, 190, 69, 0.18), transparent 24%),
-    linear-gradient(90deg, rgba(251, 248, 241, 0.98) 0%, rgba(251, 248, 241, 0.9) 48%, rgba(251, 248, 241, 0.34) 100%),
-    linear-gradient(0deg, rgba(36, 27, 10, 0.3), transparent 52%);
+    radial-gradient(circle at 72% 34%, rgba(67, 146, 106, 0.32), transparent 28%),
+    radial-gradient(circle at 86% 70%, rgba(141, 91, 164, 0.22), transparent 24%),
+    linear-gradient(90deg, rgba(251, 247, 237, 0.98) 0%, rgba(251, 247, 237, 0.9) 46%, rgba(251, 247, 237, 0.34) 100%),
+    linear-gradient(0deg, rgba(21, 45, 36, 0.42), transparent 48%);
 }
 
-.hero-content {
-  position: relative;
-  width: min(100%, 590px);
-  max-width: 590px;
-  padding: clamp(22px, 3.2vw, 36px);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(rgba(251, 248, 241, 0.86), rgba(251, 248, 241, 0.86)) padding-box,
-    var(--chakra-line) border-box;
-  border: 2px solid transparent;
-  box-shadow: 0 24px 80px rgba(36, 27, 10, 0.12);
-  backdrop-filter: blur(8px);
-}
-
-.hero-content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle at 20% 18%, var(--chakra-crown), transparent 28%),
-    radial-gradient(circle at 85% 20%, var(--chakra-throat), transparent 30%),
-    radial-gradient(circle at 50% 88%, var(--chakra-heart), transparent 34%),
-    radial-gradient(circle at 10% 92%, var(--chakra-root), transparent 24%),
-    radial-gradient(circle at 92% 86%, var(--chakra-solar), transparent 24%);
+.hero-copy {
+  width: min(100%, 760px);
 }
 
 .eyebrow {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   color: var(--moss);
-  font-size: 0.82rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -231,28 +206,28 @@ h3 {
   margin: 0;
   color: var(--earth);
   font-family: Georgia, "Times New Roman", serif;
-  line-height: 0.95;
+  line-height: 0.96;
 }
 
 h1 {
-  max-width: 500px;
-  font-size: clamp(2.7rem, 4.1vw, 4.35rem);
-  line-height: 1;
+  max-width: 820px;
+  font-size: clamp(4rem, 9vw, 9.6rem);
+  letter-spacing: 0;
 }
 
 h2 {
-  font-size: clamp(2.25rem, 5vw, 4.7rem);
+  font-size: clamp(2.6rem, 6vw, 6.4rem);
 }
 
 h3 {
-  font-size: 1.65rem;
+  font-size: clamp(1.8rem, 3.2vw, 3.8rem);
 }
 
 .lead {
-  max-width: 520px;
-  margin: 20px 0 0;
-  color: rgba(36, 27, 10, 0.86);
-  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  max-width: 660px;
+  margin: 24px 0 0;
+  color: rgba(33, 25, 9, 0.82);
+  font-size: clamp(1.05rem, 1.4vw, 1.28rem);
   font-weight: 720;
 }
 
@@ -260,298 +235,329 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 32px;
 }
 
-.hero-facts {
+.hero-console {
+  align-self: end;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  max-width: 620px;
-  margin: 34px 0 0;
+  gap: 1px;
+  border-top: 3px solid transparent;
+  border-image: var(--chakra-line) 1;
+  background: rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(14px);
 }
 
-.hero-facts div {
-  border-left: 3px solid rgba(67, 146, 106, 0.55);
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.48);
+.hero-console div {
+  padding: 22px 24px;
+  background: rgba(251, 247, 237, 0.5);
 }
 
-.hero-facts div:nth-child(2) {
-  border-left-color: rgba(235, 190, 69, 0.74);
-}
-
-.hero-facts div:nth-child(3) {
-  border-left-color: rgba(141, 91, 164, 0.6);
-}
-
-dt {
-  color: rgba(36, 27, 10, 0.64);
-  font-size: 0.78rem;
+.hero-console span,
+.hero-console small {
+  display: block;
+  color: rgba(33, 25, 9, 0.62);
   font-weight: 900;
   text-transform: uppercase;
 }
 
-dd {
-  margin: 3px 0 0;
-  font-size: 1.15rem;
-  font-weight: 900;
+.hero-console strong {
+  display: block;
+  color: var(--earth);
+  font-family: Georgia, serif;
+  font-size: 3.1rem;
+  line-height: 0.9;
 }
 
-.countdown-band {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 22px clamp(18px, 5vw, 72px);
-  color: var(--white);
-  background:
-    radial-gradient(circle at 8% 50%, rgba(235, 190, 69, 0.34), transparent 26%),
-    radial-gradient(circle at 94% 45%, rgba(77, 154, 181, 0.28), transparent 24%),
-    radial-gradient(circle at 56% 110%, rgba(141, 91, 164, 0.24), transparent 28%),
-    linear-gradient(100deg, #2f4a3b, #3d513f 48%, #4b390d);
+.portal-section,
+.route-section,
+.practice-section,
+.level-section,
+.investment-section,
+.final-portal {
+  padding: clamp(76px, 9vw, 136px) clamp(18px, 5vw, 78px);
 }
 
-.countdown-band div {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.countdown-band strong {
-  color: #ffd87b;
-  font-size: 2.4rem;
-  line-height: 1;
-}
-
-.countdown-band p {
-  margin: 0;
-  font-weight: 700;
-}
-
-.label {
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.section {
-  padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 72px);
-}
-
-.intro {
+.section-intro {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 42px;
-  align-items: start;
+  grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.55fr);
+  gap: clamp(24px, 5vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(38px, 6vw, 74px);
 }
 
-.chakra-lab {
-  align-items: center;
-  background:
-    radial-gradient(circle at 74% 26%, rgba(67, 146, 106, 0.22), transparent 28%),
-    radial-gradient(circle at 88% 82%, rgba(141, 91, 164, 0.2), transparent 24%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent);
+.section-intro.compact {
+  grid-template-columns: 1fr;
+  max-width: 920px;
 }
 
-.chakra-explorer {
-  --active-glow: rgba(67, 146, 106, 0.42);
-  --active-solid: #43926a;
+.section-intro p:not(.eyebrow),
+.practice-copy p,
+.investment-copy p,
+.final-portal p:not(.eyebrow) {
+  color: rgba(33, 25, 9, 0.74);
+  font-size: 1.08rem;
+  font-weight: 660;
+}
+
+.portal-interface {
+  --active: #43926a;
+  --active-glow: rgba(67, 146, 106, 0.34);
   display: grid;
-  grid-template-columns: minmax(240px, 0.86fr) minmax(240px, 1fr);
-  gap: clamp(22px, 4vw, 46px);
+  grid-template-columns: minmax(290px, 0.84fr) minmax(280px, 0.74fr);
+  gap: clamp(28px, 5vw, 86px);
   align-items: center;
 }
 
-.chakra-orbit {
+.chakra-gate {
   position: relative;
-  width: min(100%, 420px);
+  width: min(100%, 590px);
   aspect-ratio: 1;
   margin-inline: auto;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.7) 0 26%, transparent 27%),
-    conic-gradient(
-      from -90deg,
-      rgba(185, 54, 60, 0.28),
-      rgba(224, 125, 50, 0.28),
-      rgba(235, 190, 69, 0.32),
-      rgba(67, 146, 106, 0.36),
-      rgba(77, 154, 181, 0.28),
-      rgba(78, 84, 164, 0.28),
-      rgba(141, 91, 164, 0.3),
-      rgba(185, 54, 60, 0.28)
-    );
-  box-shadow: inset 0 0 0 1px rgba(75, 57, 13, 0.1), 0 24px 70px rgba(36, 27, 10, 0.1);
+    radial-gradient(circle, rgba(255, 255, 255, 0.78) 0 17%, transparent 18%),
+    radial-gradient(circle, transparent 0 44%, rgba(255, 255, 255, 0.38) 45% 49%, transparent 50%),
+    conic-gradient(from -90deg, rgba(185, 54, 60, 0.46), rgba(224, 125, 50, 0.46), rgba(216, 166, 38, 0.52), rgba(67, 146, 106, 0.56), rgba(77, 154, 181, 0.46), rgba(78, 84, 164, 0.44), rgba(141, 91, 164, 0.46), rgba(185, 54, 60, 0.46));
+  box-shadow: inset 0 0 0 1px rgba(73, 55, 13, 0.14), 0 34px 90px rgba(33, 25, 9, 0.12);
 }
 
-.chakra-orbit::before,
-.chakra-orbit::after {
+.chakra-gate::before,
+.chakra-gate::after {
   content: "";
   position: absolute;
-  inset: 14%;
+  inset: 9%;
   border-radius: 50%;
-  border: 1px solid rgba(75, 57, 13, 0.12);
+  border: 1px solid rgba(73, 55, 13, 0.16);
 }
 
-.chakra-orbit::after {
-  inset: 30%;
+.chakra-gate::after {
+  inset: 28%;
   border-style: dashed;
 }
 
-.chakra-orbit img {
+.gate-logo {
   position: absolute;
-  inset: 50% auto auto 50%;
-  width: 28%;
+  top: 50%;
+  left: 50%;
+  width: 24%;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0 14px 28px rgba(36, 27, 10, 0.18));
-  pointer-events: none;
+  filter: drop-shadow(0 18px 38px rgba(33, 25, 9, 0.22));
 }
 
-.chakra-point {
+.chakra-node {
   position: absolute;
-  width: 34px;
-  height: 34px;
-  border: 2px solid rgba(255, 255, 255, 0.84);
+  width: 78px;
+  height: 78px;
+  border: 2px solid rgba(255, 255, 255, 0.86);
   border-radius: 50%;
   cursor: pointer;
   transform: translate(-50%, -50%);
-  box-shadow: 0 12px 28px rgba(36, 27, 10, 0.16);
+  color: var(--white);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  box-shadow: 0 18px 42px rgba(33, 25, 9, 0.18);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.chakra-point:hover,
-.chakra-point:focus-visible,
-.chakra-point.is-active {
-  transform: translate(-50%, -50%) scale(1.22);
-  box-shadow: 0 0 0 9px var(--active-glow), 0 16px 34px rgba(36, 27, 10, 0.18);
+.chakra-node span {
+  display: block;
+  padding-inline: 8px;
+}
+
+.chakra-node:hover,
+.chakra-node:focus-visible,
+.chakra-node.is-active {
+  z-index: 2;
+  transform: translate(-50%, -50%) scale(1.16);
+  box-shadow: 0 0 0 12px var(--active-glow), 0 24px 52px rgba(33, 25, 9, 0.2);
   outline: 0;
 }
 
-.chakra-point.root {
-  top: 83%;
+.chakra-node.root {
+  top: 88%;
   left: 50%;
   background: #b9363c;
 }
 
-.chakra-point.sacral {
-  top: 71%;
-  left: 26%;
+.chakra-node.sacral {
+  top: 72%;
+  left: 19%;
   background: #e07d32;
 }
 
-.chakra-point.solar {
-  top: 45%;
-  left: 18%;
-  background: #ebbe45;
+.chakra-node.solar {
+  top: 38%;
+  left: 13%;
+  background: #d8a626;
 }
 
-.chakra-point.heart {
-  top: 21%;
+.chakra-node.heart {
+  top: 12%;
   left: 34%;
   background: #43926a;
 }
 
-.chakra-point.throat {
-  top: 21%;
+.chakra-node.throat {
+  top: 12%;
   left: 66%;
   background: #4d9ab5;
 }
 
-.chakra-point.third-eye {
-  top: 45%;
-  left: 82%;
+.chakra-node.third-eye {
+  top: 38%;
+  left: 87%;
   background: #4e54a4;
 }
 
-.chakra-point.crown {
-  top: 71%;
-  left: 74%;
+.chakra-node.crown {
+  top: 72%;
+  left: 81%;
   background: #8d5ba4;
 }
 
-.chakra-card {
+.portal-readout {
   position: relative;
-  min-height: 280px;
-  padding: clamp(24px, 4vw, 42px);
-  border-left: 4px solid var(--active-solid);
+  min-height: 500px;
+  padding: clamp(28px, 4vw, 52px);
+  border-left: 5px solid var(--active);
   background:
-    radial-gradient(circle at 100% 0%, var(--active-glow), transparent 36%),
-    rgba(255, 255, 255, 0.42);
-  backdrop-filter: blur(8px);
+    radial-gradient(circle at 100% 0%, var(--active-glow), transparent 38%),
+    rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(12px);
 }
 
-.chakra-card span {
-  color: var(--active-solid);
-  font-weight: 900;
+.portal-readout span,
+.practice-readout span,
+.level-stage span,
+.includes span {
+  color: var(--active);
+  font-weight: 950;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.chakra-card h3 {
+.portal-readout h3 {
   margin-top: 14px;
-  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  color: var(--earth);
+  font-size: clamp(2.4rem, 5vw, 5.2rem);
 }
 
-.chakra-card p {
-  max-width: 480px;
-  color: rgba(36, 27, 10, 0.78);
-  font-size: 1.08rem;
-  font-weight: 650;
+.portal-readout p {
+  max-width: 560px;
+  color: rgba(33, 25, 9, 0.78);
+  font-size: 1.1rem;
+  font-weight: 680;
 }
 
-.chakra-list {
+.portal-readout ul {
   display: grid;
-  gap: 10px;
-  max-width: 520px;
-  margin: 22px 0 34px;
+  gap: 12px;
+  margin: 28px 0 60px;
   padding: 0;
   list-style: none;
 }
 
-.chakra-list li {
+.portal-readout li {
   position: relative;
-  padding-left: 24px;
-  color: rgba(36, 27, 10, 0.8);
-  font-weight: 760;
+  padding-left: 28px;
+  color: rgba(33, 25, 9, 0.82);
+  font-weight: 800;
 }
 
-.chakra-list li::before {
+.portal-readout li::before {
   content: "";
   position: absolute;
-  top: 0.67em;
+  top: 0.64em;
   left: 0;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  background: var(--active-solid);
-  box-shadow: 0 0 0 6px var(--active-glow);
+  background: var(--active);
+  box-shadow: 0 0 0 7px var(--active-glow);
 }
 
-.energy-meter {
+.frequency-bar {
   position: absolute;
-  left: clamp(24px, 4vw, 42px);
-  right: clamp(24px, 4vw, 42px);
-  bottom: clamp(20px, 3vw, 28px);
-  height: 8px;
+  right: clamp(28px, 4vw, 52px);
+  bottom: clamp(26px, 4vw, 44px);
+  left: clamp(28px, 4vw, 52px);
+  height: 10px;
   overflow: hidden;
-  background: rgba(75, 57, 13, 0.12);
+  background: rgba(73, 55, 13, 0.12);
 }
 
-.energy-meter span {
+.frequency-bar span {
   display: block;
-  width: 58%;
+  width: 68%;
   height: 100%;
   background: var(--chakra-line);
   transition: width 240ms ease;
 }
 
-.interactive-levels {
+.route-section {
   background:
-    radial-gradient(circle at 10% 18%, var(--chakra-root), transparent 24%),
-    radial-gradient(circle at 84% 24%, var(--chakra-crown), transparent 28%),
-    var(--paper);
+    radial-gradient(circle at 12% 12%, rgba(185, 54, 60, 0.16), transparent 24%),
+    radial-gradient(circle at 88% 62%, rgba(78, 84, 164, 0.16), transparent 28%),
+    rgba(255, 255, 255, 0.26);
 }
 
+.route-line {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(180px, 1fr));
+  gap: 0;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.route-line article {
+  min-height: 330px;
+  padding: 28px 24px;
+  border-left: 1px solid rgba(73, 55, 13, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent),
+    transparent;
+}
+
+.route-line article:last-child {
+  border-right: 1px solid rgba(73, 55, 13, 0.14);
+}
+
+.route-line span {
+  display: inline-block;
+  margin-bottom: 74px;
+  color: rgba(73, 55, 13, 0.48);
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 950;
+}
+
+.route-line h3 {
+  font-size: 1.58rem;
+}
+
+.route-line p {
+  color: rgba(33, 25, 9, 0.72);
+  font-weight: 650;
+}
+
+.practice-section,
+.investment-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(300px, 0.78fr);
+  gap: clamp(28px, 6vw, 92px);
+  align-items: center;
+}
+
+.practice-board {
+  border-top: 4px solid transparent;
+  border-image: var(--chakra-line) 1;
+  padding-top: 24px;
+}
+
+.practice-tabs,
 .level-switcher {
   display: flex;
   flex-wrap: wrap;
@@ -559,19 +565,23 @@ dd {
   margin-bottom: 28px;
 }
 
+.practice-tab,
 .level-tab {
   min-height: 46px;
-  border: 1px solid rgba(75, 57, 13, 0.18);
+  border: 1px solid rgba(73, 55, 13, 0.18);
   border-radius: 999px;
   padding: 0 20px;
   color: var(--earth);
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.52);
   cursor: pointer;
   font: inherit;
   font-weight: 900;
   transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
+.practice-tab:hover,
+.practice-tab:focus-visible,
+.practice-tab.is-active,
 .level-tab:hover,
 .level-tab:focus-visible,
 .level-tab.is-active {
@@ -581,33 +591,35 @@ dd {
   transform: translateY(-2px);
 }
 
+.practice-readout,
+.level-stage {
+  padding: 28px 0 0;
+  border-top: 1px solid rgba(73, 55, 13, 0.14);
+}
+
+.practice-readout h3,
+.level-stage h3 {
+  margin-top: 10px;
+}
+
+.practice-readout p,
+.level-stage p {
+  color: rgba(33, 25, 9, 0.76);
+  font-size: 1.08rem;
+  font-weight: 660;
+}
+
+.level-section {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(216, 166, 38, 0.18), transparent 24%),
+    radial-gradient(circle at 86% 78%, rgba(141, 91, 164, 0.16), transparent 26%),
+    var(--paper);
+}
+
 .level-stage {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.65fr);
-  gap: clamp(24px, 5vw, 70px);
-  align-items: start;
-  padding-top: 26px;
-  border-top: 3px solid transparent;
-  border-image: var(--chakra-line) 1;
-}
-
-.level-stage span {
-  color: var(--moss);
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.level-stage h3 {
-  margin-top: 12px;
-  font-size: clamp(2rem, 4vw, 3.8rem);
-}
-
-.level-stage p {
-  max-width: 700px;
-  color: rgba(36, 27, 10, 0.76);
-  font-size: 1.08rem;
-  font-weight: 650;
+  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.56fr);
+  gap: clamp(24px, 5vw, 72px);
 }
 
 .level-stage ul {
@@ -619,431 +631,189 @@ dd {
 }
 
 .level-stage li {
-  padding: 0 0 14px 22px;
-  border-bottom: 1px solid rgba(75, 57, 13, 0.12);
-  color: rgba(36, 27, 10, 0.8);
+  padding: 0 0 14px 24px;
+  border-bottom: 1px solid rgba(73, 55, 13, 0.14);
+  color: rgba(33, 25, 9, 0.8);
   font-weight: 800;
 }
 
-.level-stage li::marker {
-  content: "";
-}
-
-.section-copy p:not(.eyebrow),
-.section-heading p:not(.eyebrow) {
-  max-width: 680px;
-  color: rgba(36, 27, 10, 0.76);
-  font-size: 1.08rem;
-}
-
-.feature-grid,
-.level-grid,
-.support-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 3vw, 34px);
-}
-
-.feature-grid article,
-.level-grid article {
-  position: relative;
-  overflow: hidden;
-  padding: 8px 0 0 22px;
-  border-left: 2px solid rgba(75, 57, 13, 0.14);
-}
-
-.feature-grid article::before,
-.level-grid article::before,
-.support-grid article::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -2px;
-  width: 2px;
-  height: 72px;
-  opacity: 1;
-}
-
-.feature-grid article:nth-child(1)::before,
-.level-grid article:nth-child(1)::before,
-.support-grid article:nth-child(1)::before {
-  background: linear-gradient(90deg, rgba(185, 54, 60, 0.76), rgba(224, 125, 50, 0.72), rgba(235, 190, 69, 0.76));
-}
-
-.feature-grid article:nth-child(2)::before,
-.level-grid article:nth-child(2)::before,
-.support-grid article:nth-child(2)::before {
-  background: linear-gradient(90deg, rgba(235, 190, 69, 0.76), rgba(67, 146, 106, 0.84), rgba(77, 154, 181, 0.7));
-}
-
-.feature-grid article:nth-child(3)::before,
-.level-grid article:nth-child(3)::before,
-.support-grid article:nth-child(3)::before {
-  background: linear-gradient(90deg, rgba(77, 154, 181, 0.7), rgba(78, 84, 164, 0.68), rgba(141, 91, 164, 0.76));
-}
-
-.feature-grid span {
-  display: inline-flex;
-  margin-bottom: 18px;
-  color: rgba(75, 57, 13, 0.58);
-  font-family: Georgia, serif;
-  font-size: 2.35rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.feature-grid p,
-.level-grid p,
-.support-grid p {
-  color: rgba(36, 27, 10, 0.74);
-  font-weight: 600;
-}
-
-.feature-grid h3,
-.level-grid h3,
-.support-grid h3 {
-  max-width: 10ch;
-}
-
-.support-grid h3 {
-  max-width: 14ch;
-}
-
-.split {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 72px);
-  align-items: center;
-  background:
-    radial-gradient(circle at 85% 16%, var(--chakra-crown), transparent 27%),
-    radial-gradient(circle at 16% 82%, var(--chakra-heart), transparent 30%),
-    radial-gradient(circle at 48% 22%, var(--chakra-solar), transparent 24%),
-    var(--cream);
-}
-
-.image-panel {
-  overflow: hidden;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.image-panel img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.check-list {
-  display: grid;
-  gap: 12px;
-  margin: 28px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.check-list li {
-  position: relative;
-  padding-left: 32px;
-  font-weight: 800;
-}
-
-.check-list li::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff0b8 0 22%, var(--gold) 23% 100%);
-  box-shadow: 0 0 0 6px rgba(185, 131, 45, 0.14), 0 0 18px rgba(67, 146, 106, 0.18);
-}
-
-.section-heading {
-  max-width: 850px;
-  margin-bottom: 34px;
-}
-
-.support {
-  background:
-    radial-gradient(circle at 12% 18%, var(--chakra-throat), transparent 26%),
-    radial-gradient(circle at 88% 78%, var(--chakra-sacral), transparent 28%),
-    radial-gradient(circle at 55% 18%, var(--chakra-third-eye), transparent 22%),
-    #f7f0e8;
-}
-
-.support-grid article {
-  position: relative;
-  overflow: hidden;
-  padding: 8px 0 0 22px;
-  border-left: 2px solid rgba(75, 57, 13, 0.14);
-}
-
-.support-grid h3,
-.support-grid p {
-  padding-inline: 0;
-}
-
-.support-grid h3 {
-  margin-top: 0;
-}
-
-.support-grid p {
-  padding-bottom: 0;
-}
-
-.investment {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
-  gap: 28px;
-  align-items: stretch;
-  padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 72px);
+.investment-section {
   color: var(--white);
   background:
-    radial-gradient(circle at 8% 80%, rgba(185, 54, 60, 0.3), transparent 26%),
-    radial-gradient(circle at 18% 18%, rgba(185, 131, 45, 0.38), transparent 32%),
-    radial-gradient(circle at 54% 60%, rgba(67, 146, 106, 0.22), transparent 28%),
-    radial-gradient(circle at 74% 18%, rgba(77, 154, 181, 0.26), transparent 26%),
-    radial-gradient(circle at 92% 88%, rgba(141, 91, 164, 0.28), transparent 24%),
-    linear-gradient(120deg, rgba(47, 74, 59, 0.98), rgba(75, 57, 13, 0.92));
+    radial-gradient(circle at 12% 72%, rgba(185, 54, 60, 0.28), transparent 26%),
+    radial-gradient(circle at 44% 20%, rgba(216, 166, 38, 0.32), transparent 28%),
+    radial-gradient(circle at 86% 28%, rgba(77, 154, 181, 0.24), transparent 24%),
+    linear-gradient(120deg, #152d24, #49370d);
 }
 
-.investment h2,
-.investment h3,
-.investment .eyebrow {
+.investment-section h2,
+.investment-section .eyebrow {
   color: var(--white);
 }
 
-.investment-copy,
-.include-box {
-  align-self: center;
+.investment-copy p {
+  color: rgba(255, 255, 255, 0.78);
 }
 
-.price-box,
-.pricing-panel {
+.investment-console {
+  border-top: 4px solid transparent;
+  border-image: var(--chakra-line) 1;
+  padding-top: 26px;
+}
+
+.price-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  max-width: 680px;
-  margin-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.24);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.price-box p,
-.pricing-panel p {
+.price-row p {
   margin: 0;
-  padding: 24px 26px;
-  background: transparent;
+  padding: 26px;
 }
 
-.price-box p + p,
-.pricing-panel p + p {
-  border-left: 1px solid rgba(255, 255, 255, 0.24);
+.price-row p + p {
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.price-box span,
-.price-box strong,
-.pricing-panel span,
-.pricing-panel strong,
-.pricing-panel small {
+.price-row span,
+.price-row small {
   display: block;
-}
-
-.price-box span,
-.pricing-panel span {
-  color: rgba(255, 255, 255, 0.74);
-  font-weight: 800;
-}
-
-.price-box strong,
-.pricing-panel strong {
-  margin-top: 3px;
-  font-size: clamp(1.55rem, 3vw, 2.6rem);
-}
-
-.price-regular {
-  opacity: 0.72;
-}
-
-.price-regular strong {
-  text-decoration: line-through;
-  text-decoration-thickness: 0.08em;
-}
-
-.price-special {
-  position: relative;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(235, 190, 69, 0.36), transparent 42%),
-    radial-gradient(circle at 88% 78%, rgba(67, 146, 106, 0.22), transparent 38%),
-    rgba(255, 226, 160, 0.08) !important;
-}
-
-.price-special strong {
-  color: #ffe2a0;
-}
-
-.price-special small {
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.78);
-  font-weight: 800;
-}
-
-.discount {
-  max-width: 680px;
-  color: #ffe2a0;
-  font-family: Georgia, serif;
-  font-size: clamp(1.55rem, 3vw, 2.6rem);
+  color: rgba(255, 255, 255, 0.72);
   font-weight: 900;
+}
+
+.price-row strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--white);
+  font-size: clamp(1.7rem, 3.2vw, 3rem);
+}
+
+.price-row p:first-child strong {
+  opacity: 0.65;
+  text-decoration: line-through;
+}
+
+.featured-price {
+  background:
+    radial-gradient(circle at 20% 16%, rgba(255, 226, 160, 0.24), transparent 42%),
+    rgba(255, 255, 255, 0.06);
+}
+
+.featured-price strong {
+  color: #ffe2a0;
 }
 
 .seat-meter {
-  max-width: 680px;
   margin-top: 28px;
 }
 
 .seat-row {
   display: grid;
-  grid-template-columns: repeat(8, minmax(22px, 1fr));
+  grid-template-columns: repeat(8, minmax(18px, 1fr));
   gap: 8px;
 }
 
 .seat {
-  height: 12px;
+  height: 13px;
   background: rgba(255, 255, 255, 0.18);
 }
 
 .seat.is-available {
   background: linear-gradient(90deg, #ffe2a0, #43926a);
-  box-shadow: 0 0 24px rgba(255, 226, 160, 0.18);
+  box-shadow: 0 0 26px rgba(255, 226, 160, 0.2);
 }
 
-.seat-meter p {
-  margin: 12px 0 0;
+.seat-meter p,
+.includes li {
   color: rgba(255, 255, 255, 0.78);
   font-weight: 760;
 }
 
-.seat-meter strong {
+.seat-meter strong,
+.includes span {
   color: #ffe2a0;
 }
 
-.include-box {
-  padding: 8px 0 0 26px;
-  color: var(--ink);
-  border-left: 3px solid rgba(67, 146, 106, 0.64);
-  background: transparent;
+.includes {
+  margin-top: 32px;
+  padding-left: 24px;
+  border-left: 3px solid rgba(255, 226, 160, 0.54);
 }
 
-.include-box h3 {
-  margin-bottom: 18px;
-}
-
-.include-box ul {
+.includes ul {
   display: grid;
-  gap: 14px;
-  margin: 0;
-  padding-left: 0;
-  font-weight: 750;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 18px;
+  margin: 16px 0 0;
+  padding: 0;
   list-style: none;
 }
 
-.include-box li {
-  position: relative;
-  padding-left: 22px;
-}
-
-.include-box li::before {
-  content: "";
-  position: absolute;
-  top: 0.72em;
-  left: 0;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--chakra-line);
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  background: var(--paper);
-}
-
-.community {
+.final-portal {
+  text-align: center;
   background:
-    radial-gradient(circle at 14% 16%, var(--chakra-solar), transparent 28%),
-    radial-gradient(circle at 88% 72%, var(--chakra-third-eye), transparent 28%),
-    radial-gradient(circle at 54% 95%, var(--chakra-root), transparent 25%),
+    radial-gradient(circle at 50% 18%, rgba(67, 146, 106, 0.24), transparent 28%),
+    radial-gradient(circle at 50% 88%, rgba(141, 91, 164, 0.18), transparent 24%),
     var(--paper);
 }
 
-.statement-list {
-  align-self: center;
-  margin: 0;
-  padding: 8px 0 8px 28px;
-  border: 0;
-  border-left: 3px solid transparent;
-  border-image: var(--chakra-line) 1;
-  background:
-    radial-gradient(circle at 8% 16%, rgba(67, 146, 106, 0.12), transparent 28%),
-    transparent;
-  box-shadow: none;
+.final-portal img {
+  width: min(160px, 36vw);
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 20px 40px rgba(33, 25, 9, 0.18));
 }
 
-.gallery img {
-  width: 100%;
-  aspect-ratio: 1085 / 830;
-  object-fit: contain;
-  object-position: top center;
-  border-radius: var(--radius);
-  background: var(--white);
-  box-shadow: 0 12px 36px rgba(36, 27, 10, 0.12);
+.final-portal h2,
+.final-portal p {
+  max-width: 820px;
+  margin-inline: auto;
 }
 
-.final-cta {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 28px;
-  align-items: center;
-  padding: clamp(58px, 7vw, 96px) clamp(18px, 5vw, 72px);
-  color: var(--white);
-  background:
-    radial-gradient(circle at 12% 20%, rgba(235, 190, 69, 0.3), transparent 26%),
-    radial-gradient(circle at 92% 28%, rgba(77, 154, 181, 0.28), transparent 26%),
-    radial-gradient(circle at 72% 96%, rgba(141, 91, 164, 0.28), transparent 24%),
-    radial-gradient(circle at 36% 84%, rgba(185, 54, 60, 0.22), transparent 24%),
-    var(--earth);
-}
-
-.final-cta h2,
-.final-cta .eyebrow {
-  color: var(--white);
-}
-
-.final-cta p:not(.eyebrow) {
-  max-width: 760px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1.1rem;
+.final-portal .button {
+  margin-top: 24px;
 }
 
 footer {
   display: flex;
   justify-content: space-between;
   gap: 18px;
-  padding: 28px clamp(18px, 5vw, 72px);
-  color: rgba(36, 27, 10, 0.72);
-  font-weight: 800;
+  padding: 28px clamp(18px, 5vw, 78px);
+  color: rgba(33, 25, 9, 0.72);
+  font-weight: 850;
 }
 
 footer p {
   margin: 0;
 }
 
-@media (max-width: 880px) {
+@media (max-width: 980px) {
+  .portal-hero,
+  .section-intro,
+  .portal-interface,
+  .practice-section,
+  .level-stage,
+  .investment-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-console {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .chakra-gate {
+    max-width: 430px;
+  }
+
+  .portal-readout {
+    min-height: 0;
+    padding-bottom: 88px;
+  }
+}
+
+@media (max-width: 720px) {
   .site-header {
     grid-template-columns: 1fr auto;
   }
@@ -1052,102 +822,54 @@ footer p {
     display: none;
   }
 
-  .hero {
-    min-height: auto;
-    padding-top: 104px;
-  }
-
-  .hero-media::after {
-    background:
-      linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(251, 248, 241, 0.88) 58%, rgba(251, 248, 241, 0.58) 100%),
-      linear-gradient(0deg, rgba(36, 27, 10, 0.44), transparent 44%);
-  }
-
-  .intro,
-  .split,
-  .investment,
-  .final-cta,
-  .chakra-explorer,
-  .level-stage {
-    grid-template-columns: 1fr;
-  }
-
-  .feature-grid,
-  .level-grid,
-  .support-grid,
-  .gallery,
-  .price-box,
-  .pricing-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .price-box p + p,
-  .pricing-panel p + p {
-    border-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.24);
-  }
-
-  .countdown-band,
-  footer {
-    flex-direction: column;
-  }
-
-  .final-cta .button {
-    width: 100%;
-  }
-
-  .chakra-orbit {
-    max-width: 340px;
-  }
-}
-
-@media (max-width: 560px) {
-  .site-header {
-    gap: 12px;
-    padding-inline: 14px;
-  }
-
-  .brand {
-    min-width: 0;
-  }
-
-  .brand-logo {
-    width: 44px;
-    height: 44px;
-    flex-basis: 44px;
-  }
-
-  .brand strong {
-    font-size: 0.95rem;
-  }
-
-  .brand small {
-    display: none;
-  }
-
-  .header-cta {
-    min-height: 42px;
-    padding-inline: 14px;
+  .portal-hero {
+    padding-top: 118px;
   }
 
   h1 {
-    font-size: clamp(2.35rem, 11vw, 3.35rem);
+    font-size: clamp(3.1rem, 16vw, 5.3rem);
   }
 
-  .hero-facts {
+  h2 {
+    font-size: clamp(2.25rem, 12vw, 4rem);
+  }
+
+  .hero-console,
+  .price-row,
+  .includes ul {
     grid-template-columns: 1fr;
   }
 
-  .chakra-card {
-    min-height: 0;
-    padding-bottom: 76px;
+  .price-row p + p {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
   }
 
-  .chakra-point {
-    width: 30px;
-    height: 30px;
+  .chakra-node {
+    width: 58px;
+    height: 58px;
+    font-size: 0.58rem;
   }
 
+  .route-line {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .route-line article {
+    min-height: auto;
+    border-left: 3px solid rgba(73, 55, 13, 0.16);
+  }
+
+  .route-line article:last-child {
+    border-right: 0;
+  }
+
+  .route-line span {
+    margin-bottom: 24px;
+  }
+
+  .practice-tabs,
   .level-switcher {
     display: grid;
     grid-template-columns: 1fr;
@@ -1155,5 +877,29 @@ footer p {
 
   .button {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand small {
+    display: none;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .header-cta {
+    padding-inline: 16px;
+  }
+
+  .chakra-node {
+    width: 52px;
+    height: 52px;
+  }
+
+  .chakra-node span {
+    font-size: 0;
   }
 }

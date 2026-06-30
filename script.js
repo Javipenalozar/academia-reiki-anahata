@@ -4,8 +4,7 @@ const daysLeft = document.querySelector("#daysLeft");
 function updateCountdown() {
   if (!daysLeft) return;
 
-  const now = new Date();
-  const milliseconds = targetDate.getTime() - now.getTime();
+  const milliseconds = targetDate.getTime() - new Date().getTime();
   const days = Math.max(0, Math.ceil(milliseconds / 86400000));
   daysLeft.textContent = String(days);
 }
@@ -13,36 +12,36 @@ function updateCountdown() {
 const chakraProgram = {
   root: {
     kicker: "Chakra raíz",
-    title: "Base del Reiki Usui",
-    text: "Comienzas construyendo seguridad: historia, principios, ética y fundamentos para sostener una práctica seria.",
+    title: "Fundamentos Reiki Usui",
+    text: "La entrada al portal comienza con base: historia, principios, ética y preparación energética para sostener una práctica seria.",
     color: "#b9363c",
-    glow: "rgba(185, 54, 60, 0.32)",
-    energy: "38%",
+    glow: "rgba(185, 54, 60, 0.34)",
+    energy: "34%",
     items: [
       "Historia y principios del Reiki Usui.",
-      "Preparación energética y presencia corporal.",
-      "Bases para iniciar tu proceso de certificación."
+      "Preparación corporal y energética.",
+      "Bases para iniciar la certificación."
     ]
   },
   sacral: {
     kicker: "Chakra sacro",
-    title: "Autoconocimiento y sensibilidad",
-    text: "Aprendes a observar tu mundo emocional para canalizar desde un lugar más claro, sensible y consciente.",
+    title: "Autoconocimiento sensible",
+    text: "Aprendes a observar emociones, sensaciones y bloqueos para canalizar desde un lugar más claro, humano y consciente.",
     color: "#e07d32",
-    glow: "rgba(224, 125, 50, 0.32)",
-    energy: "48%",
+    glow: "rgba(224, 125, 50, 0.34)",
+    energy: "46%",
     items: [
       "Lectura de sensaciones durante la práctica.",
       "Autoconocimiento aplicado a la sanación.",
-      "Ejercicios para soltar tensión y abrir percepción."
+      "Ejercicios para soltar tensión."
     ]
   },
   solar: {
     kicker: "Chakra plexo solar",
     title: "Canalización energética",
-    text: "Fortaleces confianza, intención y dirección para aprender a canalizar energía universal en ti y en otros.",
+    text: "Fortaleces intención, confianza y dirección para aprender a canalizar energía universal en ti y en otras personas.",
     color: "#d8a626",
-    glow: "rgba(235, 190, 69, 0.36)",
+    glow: "rgba(216, 166, 38, 0.36)",
     energy: "58%",
     items: [
       "Canalización de energía universal.",
@@ -52,13 +51,13 @@ const chakraProgram = {
   },
   heart: {
     kicker: "Chakra corazón",
-    title: "Práctica guiada",
+    title: "Práctica presencial guiada",
     text: "En Anahata integras lo aprendido con práctica presencial, escucha, presencia y acompañamiento consciente.",
     color: "#43926a",
-    glow: "rgba(67, 146, 106, 0.34)",
-    energy: "68%",
+    glow: "rgba(67, 146, 106, 0.36)",
+    energy: "70%",
     items: [
-      "Prácticas presenciales durante la formación.",
+      "4 clases prácticas presenciales.",
       "Acompañamiento para ganar confianza.",
       "Integración desde el corazón y el servicio."
     ]
@@ -66,14 +65,14 @@ const chakraProgram = {
   throat: {
     kicker: "Chakra garganta",
     title: "Acompañar a otros",
-    text: "Desarrollas comunicación, cuidado y contención para orientar sesiones con una presencia clara y respetuosa.",
+    text: "Desarrollas comunicación, cuidado y contención para orientar sesiones de Reiki con una presencia clara y respetuosa.",
     color: "#4d9ab5",
-    glow: "rgba(77, 154, 181, 0.32)",
-    energy: "76%",
+    glow: "rgba(77, 154, 181, 0.34)",
+    energy: "78%",
     items: [
       "Cómo explicar una sesión de Reiki.",
       "Comunicación consciente con consultantes.",
-      "Prácticas para acompañar procesos de otros."
+      "Estructura para acompañar procesos."
     ]
   },
   thirdEye: {
@@ -81,8 +80,8 @@ const chakraProgram = {
     title: "Radiestesia y péndulo",
     text: "Profundizas en percepción energética con herramientas prácticas como radiestesia y manejo de péndulo.",
     color: "#4e54a4",
-    glow: "rgba(78, 84, 164, 0.32)",
-    energy: "86%",
+    glow: "rgba(78, 84, 164, 0.34)",
+    energy: "88%",
     items: [
       "Técnicas de radiestesia.",
       "Manejo de péndulo en la práctica.",
@@ -94,42 +93,38 @@ const chakraProgram = {
     title: "Certificación y comunidad",
     text: "Cierras el proceso con integración, sesiones personalizadas, material de estudio y pertenencia a la comunidad Anahata.",
     color: "#8d5ba4",
-    glow: "rgba(141, 91, 164, 0.34)",
+    glow: "rgba(141, 91, 164, 0.36)",
     energy: "100%",
     items: [
       "Certificación profesional Reiki Anahata.",
       "2 sesiones personalizadas y material de estudio.",
-      "Comunidad, eventos, talleres y apoyo continuo."
+      "Eventos, talleres, comunidad y apoyo continuo."
     ]
   }
 };
 
-function renderChakra(key) {
-  const data = chakraProgram[key];
-  const explorer = document.querySelector(".chakra-explorer");
-  const kicker = document.querySelector("#chakraKicker");
-  const title = document.querySelector("#chakraName");
-  const text = document.querySelector("#chakraText");
-  const list = document.querySelector("#chakraList");
-  const meter = document.querySelector("#energyMeter");
-
-  if (!data || !explorer || !kicker || !title || !text || !list || !meter) return;
-
-  explorer.style.setProperty("--active-solid", data.color);
-  explorer.style.setProperty("--active-glow", data.glow);
-  explorer.dataset.activeChakra = key;
-  kicker.textContent = data.kicker;
-  title.textContent = data.title;
-  text.textContent = data.text;
-  list.innerHTML = data.items.map((item) => `<li>${item}</li>`).join("");
-  meter.style.width = data.energy;
-
-  document.querySelectorAll(".chakra-point").forEach((button) => {
-    const isActive = button.dataset.chakra === key;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-}
+const practiceProgram = {
+  theory: {
+    tag: "Comprensión",
+    title: "10 clases teóricas",
+    text: "Recibes una estructura clara para comprender Reiki Usui, sus principios, su historia y la forma consciente de canalizar energía."
+  },
+  practice: {
+    tag: "Integración",
+    title: "4 clases prácticas",
+    text: "Practicas durante el proceso, con guía presencial y retroalimentación para sentir seguridad al canalizar."
+  },
+  tools: {
+    tag: "Herramientas",
+    title: "Radiestesia, péndulo y sesiones",
+    text: "Incluye manejo de péndulo, 2 péndulos físicos, 2 sesiones personalizadas y recursos para profundizar tu práctica."
+  },
+  community: {
+    tag: "Continuidad",
+    title: "Comunidad Anahata",
+    text: "Después de graduarte puedes seguir conectado a eventos, talleres, recursos y espacios de crecimiento espiritual."
+  }
+};
 
 const levelProgram = {
   one: {
@@ -164,6 +159,51 @@ const levelProgram = {
   }
 };
 
+function renderChakra(key) {
+  const data = chakraProgram[key];
+  const portal = document.querySelector(".portal-interface");
+  const kicker = document.querySelector("#chakraKicker");
+  const title = document.querySelector("#chakraName");
+  const text = document.querySelector("#chakraText");
+  const list = document.querySelector("#chakraList");
+  const meter = document.querySelector("#energyMeter");
+
+  if (!data || !portal || !kicker || !title || !text || !list || !meter) return;
+
+  portal.style.setProperty("--active", data.color);
+  portal.style.setProperty("--active-glow", data.glow);
+  kicker.textContent = data.kicker;
+  title.textContent = data.title;
+  text.textContent = data.text;
+  list.innerHTML = data.items.map((item) => `<li>${item}</li>`).join("");
+  meter.style.width = data.energy;
+
+  document.querySelectorAll(".chakra-node").forEach((button) => {
+    const isActive = button.dataset.chakra === key;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function renderPractice(key) {
+  const data = practiceProgram[key];
+  const tag = document.querySelector("#practiceTag");
+  const title = document.querySelector("#practiceTitle");
+  const text = document.querySelector("#practiceText");
+
+  if (!data || !tag || !title || !text) return;
+
+  tag.textContent = data.tag;
+  title.textContent = data.title;
+  text.textContent = data.text;
+
+  document.querySelectorAll(".practice-tab").forEach((button) => {
+    const isActive = button.dataset.practice === key;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+}
+
 function renderLevel(key) {
   const data = levelProgram[key];
   const tag = document.querySelector("#levelTag");
@@ -185,8 +225,12 @@ function renderLevel(key) {
   });
 }
 
-document.querySelectorAll(".chakra-point").forEach((button) => {
+document.querySelectorAll(".chakra-node").forEach((button) => {
   button.addEventListener("click", () => renderChakra(button.dataset.chakra));
+});
+
+document.querySelectorAll(".practice-tab").forEach((button) => {
+  button.addEventListener("click", () => renderPractice(button.dataset.practice));
 });
 
 document.querySelectorAll(".level-tab").forEach((button) => {
@@ -196,4 +240,5 @@ document.querySelectorAll(".level-tab").forEach((button) => {
 updateCountdown();
 setInterval(updateCountdown, 60000);
 renderChakra("heart");
+renderPractice("theory");
 renderLevel("one");
