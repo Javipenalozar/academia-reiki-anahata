@@ -382,16 +382,21 @@ h3 {
 
 .chakra-node {
   position: absolute;
-  width: 52px;
-  height: 52px;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  padding: 0;
   border: 1px solid rgba(246, 240, 230, 0.78);
   border-radius: 50%;
   color: var(--marfil);
   cursor: pointer;
   font-family: Inter, sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.42rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
+  line-height: 1.08;
+  text-align: center;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -406,13 +411,13 @@ h3 {
   outline: 0;
 }
 
-.chakra-node.root { top: 83%; left: 50%; background: #b9363c; }
-.chakra-node.sacral { top: 69%; left: 27%; background: #e07d32; }
-.chakra-node.solar { top: 47%; left: 20%; background: #d8a626; }
-.chakra-node.heart { top: 25%; left: 36%; background: #43926a; }
-.chakra-node.throat { top: 25%; left: 64%; background: #4d9ab5; }
-.chakra-node.third-eye { top: 47%; left: 80%; background: #4e54a4; }
-.chakra-node.crown { top: 69%; left: 73%; background: #8d5ba4; }
+.chakra-node.root { top: 79%; left: 50%; background: #b9363c; }
+.chakra-node.sacral { top: 66%; left: 31%; background: #e07d32; }
+.chakra-node.solar { top: 48%; left: 25%; background: #d8a626; }
+.chakra-node.heart { top: 30%; left: 39%; background: #43926a; }
+.chakra-node.throat { top: 30%; left: 61%; background: #4d9ab5; }
+.chakra-node.third-eye { top: 48%; left: 75%; background: #4e54a4; }
+.chakra-node.crown { top: 66%; left: 69%; background: #8d5ba4; }
 
 .portal-readout {
   min-height: 390px;
