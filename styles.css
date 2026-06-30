@@ -345,6 +345,290 @@ dd {
   align-items: start;
 }
 
+.chakra-lab {
+  align-items: center;
+  background:
+    radial-gradient(circle at 74% 26%, rgba(67, 146, 106, 0.22), transparent 28%),
+    radial-gradient(circle at 88% 82%, rgba(141, 91, 164, 0.2), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent);
+}
+
+.chakra-explorer {
+  --active-glow: rgba(67, 146, 106, 0.42);
+  --active-solid: #43926a;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.86fr) minmax(240px, 1fr);
+  gap: clamp(22px, 4vw, 46px);
+  align-items: center;
+}
+
+.chakra-orbit {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.7) 0 26%, transparent 27%),
+    conic-gradient(
+      from -90deg,
+      rgba(185, 54, 60, 0.28),
+      rgba(224, 125, 50, 0.28),
+      rgba(235, 190, 69, 0.32),
+      rgba(67, 146, 106, 0.36),
+      rgba(77, 154, 181, 0.28),
+      rgba(78, 84, 164, 0.28),
+      rgba(141, 91, 164, 0.3),
+      rgba(185, 54, 60, 0.28)
+    );
+  box-shadow: inset 0 0 0 1px rgba(75, 57, 13, 0.1), 0 24px 70px rgba(36, 27, 10, 0.1);
+}
+
+.chakra-orbit::before,
+.chakra-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  border: 1px solid rgba(75, 57, 13, 0.12);
+}
+
+.chakra-orbit::after {
+  inset: 30%;
+  border-style: dashed;
+}
+
+.chakra-orbit img {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 28%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 14px 28px rgba(36, 27, 10, 0.18));
+  pointer-events: none;
+}
+
+.chakra-point {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.84);
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 12px 28px rgba(36, 27, 10, 0.16);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.chakra-point:hover,
+.chakra-point:focus-visible,
+.chakra-point.is-active {
+  transform: translate(-50%, -50%) scale(1.22);
+  box-shadow: 0 0 0 9px var(--active-glow), 0 16px 34px rgba(36, 27, 10, 0.18);
+  outline: 0;
+}
+
+.chakra-point.root {
+  top: 83%;
+  left: 50%;
+  background: #b9363c;
+}
+
+.chakra-point.sacral {
+  top: 71%;
+  left: 26%;
+  background: #e07d32;
+}
+
+.chakra-point.solar {
+  top: 45%;
+  left: 18%;
+  background: #ebbe45;
+}
+
+.chakra-point.heart {
+  top: 21%;
+  left: 34%;
+  background: #43926a;
+}
+
+.chakra-point.throat {
+  top: 21%;
+  left: 66%;
+  background: #4d9ab5;
+}
+
+.chakra-point.third-eye {
+  top: 45%;
+  left: 82%;
+  background: #4e54a4;
+}
+
+.chakra-point.crown {
+  top: 71%;
+  left: 74%;
+  background: #8d5ba4;
+}
+
+.chakra-card {
+  position: relative;
+  min-height: 280px;
+  padding: clamp(24px, 4vw, 42px);
+  border-left: 4px solid var(--active-solid);
+  background:
+    radial-gradient(circle at 100% 0%, var(--active-glow), transparent 36%),
+    rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+.chakra-card span {
+  color: var(--active-solid);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chakra-card h3 {
+  margin-top: 14px;
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+}
+
+.chakra-card p {
+  max-width: 480px;
+  color: rgba(36, 27, 10, 0.78);
+  font-size: 1.08rem;
+  font-weight: 650;
+}
+
+.chakra-list {
+  display: grid;
+  gap: 10px;
+  max-width: 520px;
+  margin: 22px 0 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.chakra-list li {
+  position: relative;
+  padding-left: 24px;
+  color: rgba(36, 27, 10, 0.8);
+  font-weight: 760;
+}
+
+.chakra-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.67em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--active-solid);
+  box-shadow: 0 0 0 6px var(--active-glow);
+}
+
+.energy-meter {
+  position: absolute;
+  left: clamp(24px, 4vw, 42px);
+  right: clamp(24px, 4vw, 42px);
+  bottom: clamp(20px, 3vw, 28px);
+  height: 8px;
+  overflow: hidden;
+  background: rgba(75, 57, 13, 0.12);
+}
+
+.energy-meter span {
+  display: block;
+  width: 58%;
+  height: 100%;
+  background: var(--chakra-line);
+  transition: width 240ms ease;
+}
+
+.interactive-levels {
+  background:
+    radial-gradient(circle at 10% 18%, var(--chakra-root), transparent 24%),
+    radial-gradient(circle at 84% 24%, var(--chakra-crown), transparent 28%),
+    var(--paper);
+}
+
+.level-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.level-tab {
+  min-height: 46px;
+  border: 1px solid rgba(75, 57, 13, 0.18);
+  border-radius: 999px;
+  padding: 0 20px;
+  color: var(--earth);
+  background: rgba(255, 255, 255, 0.58);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.level-tab:hover,
+.level-tab:focus-visible,
+.level-tab.is-active {
+  color: var(--white);
+  background: var(--moss);
+  outline: 0;
+  transform: translateY(-2px);
+}
+
+.level-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.65fr);
+  gap: clamp(24px, 5vw, 70px);
+  align-items: start;
+  padding-top: 26px;
+  border-top: 3px solid transparent;
+  border-image: var(--chakra-line) 1;
+}
+
+.level-stage span {
+  color: var(--moss);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.level-stage h3 {
+  margin-top: 12px;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+}
+
+.level-stage p {
+  max-width: 700px;
+  color: rgba(36, 27, 10, 0.76);
+  font-size: 1.08rem;
+  font-weight: 650;
+}
+
+.level-stage ul {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.level-stage li {
+  padding: 0 0 14px 22px;
+  border-bottom: 1px solid rgba(75, 57, 13, 0.12);
+  color: rgba(36, 27, 10, 0.8);
+  font-weight: 800;
+}
+
+.level-stage li::marker {
+  content: "";
+}
+
 .section-copy p:not(.eyebrow),
 .section-heading p:not(.eyebrow) {
   max-width: 680px;
@@ -613,6 +897,37 @@ dd {
   font-weight: 900;
 }
 
+.seat-meter {
+  max-width: 680px;
+  margin-top: 28px;
+}
+
+.seat-row {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(22px, 1fr));
+  gap: 8px;
+}
+
+.seat {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.seat.is-available {
+  background: linear-gradient(90deg, #ffe2a0, #43926a);
+  box-shadow: 0 0 24px rgba(255, 226, 160, 0.18);
+}
+
+.seat-meter p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 760;
+}
+
+.seat-meter strong {
+  color: #ffe2a0;
+}
+
 .include-box {
   padding: 8px 0 0 26px;
   color: var(--ink);
@@ -751,7 +1066,9 @@ footer p {
   .intro,
   .split,
   .investment,
-  .final-cta {
+  .final-cta,
+  .chakra-explorer,
+  .level-stage {
     grid-template-columns: 1fr;
   }
 
@@ -777,6 +1094,10 @@ footer p {
 
   .final-cta .button {
     width: 100%;
+  }
+
+  .chakra-orbit {
+    max-width: 340px;
   }
 }
 
@@ -814,6 +1135,21 @@ footer p {
   }
 
   .hero-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .chakra-card {
+    min-height: 0;
+    padding-bottom: 76px;
+  }
+
+  .chakra-point {
+    width: 30px;
+    height: 30px;
+  }
+
+  .level-switcher {
+    display: grid;
     grid-template-columns: 1fr;
   }
 

@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://anahata.eventosjv.com/">
     <link rel="preload" as="image" href="assets/hero-reiki-anahata.png">
     <link rel="preload" as="image" href="assets/logo-symbol.png">
-    <link rel="stylesheet" href="styles.css?v=20260630c">
+    <link rel="stylesheet" href="styles.css?v=20260630d">
   </head>
   <body>
     <header class="site-header">
@@ -81,31 +81,42 @@
         <p>Quedan 4 cupos disponibles para el grupo presencial del 22 de julio.</p>
       </section>
 
-      <section class="section intro">
+      <section class="section intro chakra-lab" aria-labelledby="chakraTitle">
         <div class="section-copy">
           <p class="eyebrow">Descubre, aprende y transforma</p>
-          <h2>Fórmate como canal de bienestar para ti y para los demás.</h2>
+          <h2 id="chakraTitle">El programa se vive a través de los 7 chakras.</h2>
           <p>
-            En Reiki Usui Anahata recibirás teoría, práctica, acompañamiento continuo
-            y herramientas para integrar la energía universal en tu crecimiento
-            personal y espiritual.
+            Toca cada chakra para descubrir qué parte de la certificación activa:
+            teoría, práctica, radiestesia, acompañamiento, sesiones personalizadas
+            y comunidad.
           </p>
         </div>
-        <div class="feature-grid">
-          <article>
-            <span>01</span>
-            <h3>Conexión espiritual</h3>
-            <p>Desarrolla una relación más profunda con la energía universal.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Sanación integral</h3>
-            <p>Aprende técnicas para trabajar contigo y acompañar a otros.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Habilidades prácticas</h3>
-            <p>Integra radiestesia, manejo de péndulo y práctica guiada.</p>
+        <div class="chakra-explorer" data-active-chakra="heart">
+          <div class="chakra-orbit" aria-label="Selector interactivo de chakras">
+            <button class="chakra-point root" type="button" data-chakra="root" aria-label="Raíz"></button>
+            <button class="chakra-point sacral" type="button" data-chakra="sacral" aria-label="Sacro"></button>
+            <button class="chakra-point solar" type="button" data-chakra="solar" aria-label="Plexo solar"></button>
+            <button class="chakra-point heart is-active" type="button" data-chakra="heart" aria-label="Corazón"></button>
+            <button class="chakra-point throat" type="button" data-chakra="throat" aria-label="Garganta"></button>
+            <button class="chakra-point third-eye" type="button" data-chakra="thirdEye" aria-label="Tercer ojo"></button>
+            <button class="chakra-point crown" type="button" data-chakra="crown" aria-label="Corona"></button>
+            <img src="assets/logo-symbol.png" alt="" aria-hidden="true">
+          </div>
+          <article class="chakra-card" aria-live="polite">
+            <span id="chakraKicker">Chakra corazón</span>
+            <h3 id="chakraName">Práctica guiada</h3>
+            <p id="chakraText">
+              En Anahata integras lo aprendido con práctica presencial, escucha,
+              presencia y acompañamiento consciente.
+            </p>
+            <ul id="chakraList" class="chakra-list">
+              <li>Prácticas presenciales durante la formación.</li>
+              <li>Acompañamiento para ganar confianza.</li>
+              <li>Integración desde el corazón y el servicio.</li>
+            </ul>
+            <div class="energy-meter" aria-hidden="true">
+              <span id="energyMeter"></span>
+            </div>
           </article>
         </div>
       </section>
@@ -130,24 +141,30 @@
         </ul>
       </section>
 
-      <section class="section levels">
+      <section class="section levels interactive-levels">
         <div class="section-heading">
           <p class="eyebrow">Niveles de formación</p>
-          <h2>Del fundamento energético a la práctica avanzada.</h2>
+          <h2>Elige un nivel y mira qué vas integrando.</h2>
         </div>
-        <div class="level-grid">
-          <article>
-            <h3>Nivel I</h3>
-            <p>Conceptos básicos del Reiki, su historia y la canalización de la energía universal.</p>
-          </article>
-          <article>
-            <h3>Nivel II</h3>
-            <p>Profundización espiritual, filosofía del Reiki y sintonización para acompañar a otros.</p>
-          </article>
-          <article>
-            <h3>Nivel III</h3>
-            <p>Técnicas avanzadas, símbolos sagrados, energía a distancia y trabajo emocional.</p>
-          </article>
+        <div class="level-switcher" role="tablist" aria-label="Niveles de formación Reiki">
+          <button class="level-tab is-active" type="button" role="tab" aria-selected="true" data-level="one">Nivel I</button>
+          <button class="level-tab" type="button" role="tab" aria-selected="false" data-level="two">Nivel II</button>
+          <button class="level-tab" type="button" role="tab" aria-selected="false" data-level="three">Nivel III</button>
+        </div>
+        <div class="level-stage" aria-live="polite">
+          <div>
+            <span id="levelTag">Fundamento</span>
+            <h3 id="levelTitle">Nivel I: canalizar desde la base</h3>
+            <p id="levelText">
+              Conceptos básicos del Reiki, su historia y la canalización de la
+              energía universal para iniciar una práctica consciente.
+            </p>
+          </div>
+          <ul id="levelList">
+            <li>Historia y principios del Reiki Usui.</li>
+            <li>Autotratamiento y presencia energética.</li>
+            <li>Primeras prácticas guiadas.</li>
+          </ul>
         </div>
       </section>
 
@@ -188,6 +205,19 @@
             </p>
           </div>
           <p class="discount">Quedan 4 cupos disponibles para el grupo presencial.</p>
+          <div class="seat-meter" aria-label="Disponibilidad de cupos">
+            <div class="seat-row" aria-hidden="true">
+              <span class="seat is-available"></span>
+              <span class="seat is-available"></span>
+              <span class="seat is-available"></span>
+              <span class="seat is-available"></span>
+              <span class="seat"></span>
+              <span class="seat"></span>
+              <span class="seat"></span>
+              <span class="seat"></span>
+            </div>
+            <p><strong>4 de 8 cupos</strong> siguen disponibles para practicar en grupo.</p>
+          </div>
         </div>
         <div class="include-box">
           <h3>Incluye</h3>
